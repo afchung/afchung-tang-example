@@ -6,8 +6,8 @@ import org.apache.reef.tang.annotations.NamedParameter;
 /**
  * Created by anchung on 10/26/2015.
  */
-@NamedParameter(default_value = "1")
-public final class SleeveLength implements Name<Integer> {
-    private SleeveLength(){
-    }
+@NamedParameter
+public final class ShirtLength implements Name<Integer> {
+  private ShirtLength() {
+  }
 }

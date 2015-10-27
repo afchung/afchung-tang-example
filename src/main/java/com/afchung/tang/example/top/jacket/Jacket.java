@@ -8,5 +8,5 @@ import org.apache.reef.tang.annotations.DefaultImplementation;
  */
 @DefaultImplementation(DownJacket.class)
 public interface Jacket extends Top {
-    int getThickness();
+  int getThickness();
 }

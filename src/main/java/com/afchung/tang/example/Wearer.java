@@ -6,11 +6,11 @@ import javax.inject.Inject;
  * Created by anchung on 10/26/2015.
  */
 public final class Wearer {
-    @Inject
-    private Wearer(){
-    }
+  @Inject
+  private Wearer() {
+  }
 
-    public String getName() {
-        return "DefaultWearer";
-    }
+  public String getName() {
+    return "DefaultWearer";
+  }
 }

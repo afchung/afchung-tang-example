@@ -11,6 +11,6 @@ import java.util.Set;
  */
 @NamedParameter
 public final class TopLayers implements Name<Set<Top>> {
-    private TopLayers(){
-    }
+  private TopLayers() {
+  }
 }
