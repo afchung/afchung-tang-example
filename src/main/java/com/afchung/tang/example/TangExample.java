@@ -79,7 +79,7 @@ public final class TangExample {
   private static void firstExample() throws InjectionException {
     printSeparator(1, "This example is a simple example of trying to get an instance of a Shirt without a " +
         "DefaultImplementation or without binding an implementation to the configuration, followed by binding " +
-        "an implementation to the Configuration.");
+        "an implementation to the Configuration after forking an Injector.");
 
     final Configuration shirtConfig = ShirtConfiguration.CONF
         .set(ShirtConfiguration.COLOR, "White")
@@ -95,15 +95,21 @@ public final class TangExample {
       e.printStackTrace();
     }
 
+    final Material origMat = injector.getInstance(Material.class);
+
     final Configuration shirtImplBindingConfig =
         Tang.Factory.getTang().newConfigurationBuilder().bindImplementation(Shirt.class, TeeShirt.class).build();
 
     final Injector childInjector = injector.forkInjector(shirtImplBindingConfig);
+
     final Shirt shirt = childInjector.getInstance(Shirt.class);
     System.out.println("Shirt type is: " + shirt.getName());
     System.out.println("Shirt color is: " + shirt.getColor());
     System.out.println("Shirt length is: " + shirt.getTopLength());
     System.out.println("Shirt material is: " + shirt.getMaterial());
+
+    final Material childMat = childInjector.getInstance(Material.class);
+    System.out.println("Forked Material is the same as original Material: " +  (origMat == childMat));
   }
 
   private static void secondExample(final Configuration jacketConfig) throws InjectionException {
